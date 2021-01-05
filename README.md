@@ -39,6 +39,31 @@ When setting up the VSCode editor, the `php-cli` script is used as the PHP
 executable. The PHP environment has access to the same filesystem as your
 home directory.
 
+For example, the PHP code validator would be told where to find the PHP
+executable with this setting against your remote ssh settings file:
+
+```json
+{
+    "php.validate.executablePath": "vendor/bin/php-cli"
+}
+```
+
+Similarly, Intellesense uses this setting:
+
+```json
+{
+    "php.executablePath": "vendor/bin/php-cli"
+}
+```
+
+Each application you are working on gets its own PHP CLI script, so later
+they could all be running different versions of PHP as appropriate for each
+project.
+
+The above paths are relative to your project workspace, which is assumed to
+by the root of your project where teh `vendor` directory is located.
+Tweak the paths as appropriate if you have a different setup.
+
 ## TODO
 
 These are very early days, and this package is created to meet our specific use-case.
@@ -48,6 +73,7 @@ The restrictions and assumptions that apply at the moment are:
 
 * The latest alpine-7 PHP container is good enough and runs the version of PHP needed
   for the project.
+  The ability to configure the PHP version would be handy.
 * No special PHP extensions are required; this is just for VSCode to be able to validate
   and parse the project source code and run a PHP language server.
 * All the source code is under `$HOME`. The `$HOME` path will be available as a volume
