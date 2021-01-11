@@ -13,8 +13,9 @@ Until released, the following needs to be added to the project's `composer.json`
         {
             "type": "vcs",
             "url": "https://github.com/consilience/php-docker-cli.git"
-        },
-    ]
+        }
+    ],
+    "minimum-stability": "dev"
 ```
 
 Then the packaged is installed using:
